@@ -6,6 +6,13 @@ export const environment = {
   production: false
 };
 
+export const githConfig = {
+  githubAPI: "https://api.github.com/graphql",
+  token: "<-YOUR_TOKEN->",
+  clientId: "<-YOUR_CLIENT_ID->",
+  clientSecretId: "<-YOUR_CLIENT_SECRET_ID->"
+};
+
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

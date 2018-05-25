@@ -31,36 +31,79 @@ const getUserRepository = gql`
 `;
 
 const getLoggedUser = gql`
- query($first: Int) {
+  query($first: Int) {
     viewer {
       login
+      name
       email
       websiteUrl
       avatarUrl
       bio
-      createdAt
-      updatedAt
+      location
+      pinnedRepositories(first: 10) {
+        nodes {
+          name
+          description
+          forkCount
+          stargazers {
+            totalCount
+          }
+          languages(first: 1) {
+            nodes {
+              color
+              name
+            }
+          }
+        }
+      }
       starredRepositories(first: $first) {
         nodes {
           name
-        }
-      }
-      followers(first: $first) {
-        nodes {
-          login
-          email
-          avatarUrl
-        }
-      }
-      following(first: $first) {
-        nodes {
-          login
-          email
-          avatarUrl
         }
       }
     }
   }
 `;
 
-export { getUserRepository, getLoggedUser };
+const getFollowersQuery = gql`
+  query($first: Int) {
+    viewer {
+      followers(first: $first) {
+        nodes {
+          name
+          login
+          email
+          avatarUrl
+          bio
+          company
+          location
+        }
+      }
+    }
+  }
+`;
+
+const getFollowingQuery = gql`
+  query($first: Int) {
+    viewer {
+      following(first: $first) {
+        nodes {
+          name
+          login
+          email
+          avatarUrl
+          bio
+          company
+          location
+        }
+      }
+    }
+  }
+`;
+
+export {
+  getUserRepository,
+  getLoggedUser,
+  getFollowersQuery,
+  getFollowingQuery
+};

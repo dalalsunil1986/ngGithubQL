@@ -4,29 +4,32 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TopNavComponent } from "./top-nav/top-nav.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { TopNavComponent } from "./components/top-nav/top-nav.component";
 
 // Apollo Client
 import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { NgHttpLoaderModule } from "ng-http-loader";
 
 import { githConfig } from "./../environments/environment";
-import { FollowersComponent } from "./followers/followers.component";
-import { FollowingComponent } from "./following/following.component";
-import { PinnedRepoComponent } from "./pinned-repo/pinned-repo.component";
-import { RepoComponent } from "./repo/repo.component";
+import { FollowersComponent } from "./components/followers/followers.component";
+import { FollowingComponent } from "./components/following/following.component";
+import { PinnedRepoComponent } from "./components/pinned-repo/pinned-repo.component";
+import { RepoComponent } from "./components/repo/repo.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { LeftsideDashboardComponent } from "./components/dashboard/leftside-dashboard/leftside-dashboard.component";
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
-    DashboardComponent,
     FollowersComponent,
     FollowingComponent,
     PinnedRepoComponent,
-    RepoComponent
+    RepoComponent,
+    DashboardComponent,
+    LeftsideDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { RepoComponent } from "./repo/repo.component";
     FormsModule,
     HttpClientModule,
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    NgHttpLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

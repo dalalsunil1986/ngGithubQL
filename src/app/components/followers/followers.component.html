@@ -1,0 +1,26 @@
+<div *ngFor="let follower of viewer.followers?.nodes">
+  <div class="row p-3">
+    <img [src]="follower.avatarUrl" class="rounded float-left" alt="follower.name" width="10%" height="10%">
+    <div class="float-right" style="width: 70%;">
+      <span class="text-primary m-2" style="font-size: 1.25rem" *ngIf="follower.name;else other_content">
+        {{follower.name}}
+      </span>
+      <ng-template #other_content>
+        <span class="text-primary m-2" style="font-size: 1.25rem">{{follower.login}}</span>
+      </ng-template>
+      <span class="m-2 text-muted">{{follower.login}}</span>
+      <br>
+      <div>
+        <p class="m-2 text-muted">{{follower.bio}}</p>
+        <div class="m-2 text-muted">
+          <span *ngIf="follower.company">
+            <i class="fa fa-users m1-2"></i> {{follower.company}}</span>
+          <span class="ml-3" *ngIf="follower.location">
+            <i class="fa fa-map-marker mr-1"></i> {{follower.location}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,61 @@
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-3">
+      <git-leftside-dashboard [ownerObject]="ownerObject"></git-leftside-dashboard>
+    </div>
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="repos-tab" data-toggle="tab" href="#repos" role="tab" aria-controls="repos" aria-selected="false">Repositories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="starRepos-tab" data-toggle="tab" href="#starRepos" role="tab" aria-controls="starRepos" aria-selected="false">Stars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false"
+            (click)="getFollowersData()">Followers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">Following</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+          <div>
+            <div class="row">
+              <p class="m-3">Pinned Repositories</p>
+            </div>
+            <div class="row">
+              <div class="col-sm-6" *ngFor="let pinnedRepo of ownerObject?.pinnedRepositories?.nodes">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h6 class="card-title text-primary">{{pinnedRepo.name}}</h6>
+                    <p class="card-text" style="font-size: 12.5px">{{pinnedRepo.description}}</p>
+                  </div>
+                  <div class="ml-3 mr-3 mb-3">
+                    <span class="mr-4">{{pinnedRepo.languages?.nodes[0]?.name}}</span>
+                    <span class="mr-4" style="font-size: small" *ngIf="pinnedRepo.languages?.nodes.length > 0">
+                      <i class="fa fa-star mr-1"></i>{{pinnedRepo.stargazers?.totalCount}}</span>
+                    <span class="mr-4" style="font-size: small" *ngIf="pinnedRepo.languages?.nodes.length > 0">
+                      <i class="fa fa-code-fork mr-1"></i>{{pinnedRepo.forkCount}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="repos" role="tabpanel" aria-labelledby="repos-tab">
+          ...
+        </div>
+        <div class="tab-pane fade" id="starRepos" role="tabpanel" aria-labelledby="starRepos-tab">...</div>
+        <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+          <git-followers [ownerFollowerObject]="ownerFollowersObject"></git-followers>
+        </div>
+        <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">...</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,10 @@
 # GitQLClient
+  Developed   **Github Clone** application by consuming **Github GraphQL API** using **AngularV6**
+  
+
+### Screenshot
+![index](https://github.com/ikismail/ngGithubQL/screenshots/main.PNG)
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 

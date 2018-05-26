@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row mt-5" style="    font-family: 'Source Sans Pro';
+  font-size: 1.3em;
+  z-index: 10;
+  width: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+  z-index: 100;">
+    <div class="col-sm-6 col-md-4 col-md-offset-4" style="left: 35%">
+      <div class="account-wall">
+        <img class="profile-img" src="../../../../assets/git-logo.png" alt="">
+        <h4 class="text-center">Github Client</h4>
+        <form class="form-signin" #getUserForm="ngForm" (submit)="getUser(getUserForm)">
+          <input type="text" class="form-control" placeholder="username" required autofocus name="username" [(ngModel)]="username">
+          <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="getUserForm.invalid">
+            Fetch Data</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

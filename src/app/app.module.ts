@@ -22,6 +22,8 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LeftsideDashboardComponent } from "./components/dashboard/leftside-dashboard/leftside-dashboard.component";
 import { StarredRepoComponent } from "./components/starred-repo/starred-repo.component";
 import { MainCompoComponent } from "./components/dashboard/main-compo/main-compo.component";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,10 @@ import { MainCompoComponent } from "./components/dashboard/main-compo/main-compo
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
-    NgHttpLoaderModule
+    NgHttpLoaderModule,
+    ServiceWorkerModule.register("/ngsw-worker.js", {
+      enabled: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

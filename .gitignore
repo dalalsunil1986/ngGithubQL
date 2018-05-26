@@ -3,6 +3,7 @@
 
 #Credentials
 /src/environments/environmentDummy.ts
+.firebaserc
 
 # compiled output
 /dist

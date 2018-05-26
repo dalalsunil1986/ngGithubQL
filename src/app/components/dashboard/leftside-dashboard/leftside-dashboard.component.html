@@ -4,9 +4,9 @@
 <p class="text-muted" style="font-size: 1rem">{{ownerObject?.bio}}</p>
 <button class="btn btn-primary ml-5">Show Bio</button>
 <hr>
-<p class="text-muted" style="font-size: 1rem">
+<p class="text-muted" style="font-size: 1rem" *ngIf="ownerObject?.location">
   <i class="fa fa-map-marker mr-2"></i>{{ownerObject?.location}}</p>
-<p class="text-muted" style="font-size: 1rem">
+<p class="text-muted" style="font-size: 1rem" *ngIf="ownerObject?.websiteUrl">
   <i class="fa fa-link mr-2"></i>{{ownerObject?.websiteUrl}}</p>
-<p class="text-muted" style="font-size: 1rem">
+<p class="text-muted" style="font-size: 1rem" *ngIf="ownerObject?.email">
   <i class="fa fa-envelope mr-2"></i>{{ownerObject?.email}}</p>

@@ -31,43 +31,44 @@ const getUserRepository = gql`
 `;
 
 const getLoggedUser = gql`
-  query($first: Int) {
-    viewer {
-      login
-      name
-      email
-      websiteUrl
-      avatarUrl
-      bio
-      location
-      pinnedRepositories(first: 10) {
-        nodes {
-          name
-          description
-          forkCount
-          stargazers {
-            totalCount
-          }
-          languages(first: 1) {
-            nodes {
-              color
-              name
-            }
-          }
+query ($first: Int, $login: String!) {
+  user(login: $login) {
+    login
+    name
+    email
+    websiteUrl
+    avatarUrl
+    bio
+    location
+    pinnedRepositories(first: 10) {
+      nodes {
+        name
+        description
+        forkCount
+        stargazers {
+          totalCount
         }
-      }
-      starredRepositories(first: $first) {
-        nodes {
-          name
+        languages(first: 1) {
+          nodes {
+            color
+            name
+          }
         }
       }
     }
+    starredRepositories(first: $first) {
+      nodes {
+        name
+      }
+    }
   }
+}
+
 `;
 
 const getFollowersQuery = gql`
-  query($first: Int) {
-    viewer {
+  query($first: Int, $login: String!) {
+    user(login: $login) {
       followers(first: $first) {
         nodes {
           name
@@ -84,8 +85,8 @@ const getFollowersQuery = gql`
 `;
 
 const getFollowingQuery = gql`
-  query($first: Int) {
-    viewer {
+  query($first: Int, $login: String!) {
+    user(login: $login) {
       following(first: $first) {
         nodes {
           name
@@ -101,9 +102,33 @@ const getFollowingQuery = gql`
   }
 `;
 
+const getStarredRepoQuery = gql`
+  query($first: Int, $login: String!) {
+    user(login: $login) {
+      starredRepositories(first: $first) {
+        nodes {
+          name
+          description
+          forkCount
+          stargazers {
+            totalCount
+          }
+          languages(first: 1) {
+            nodes {
+              color
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   getUserRepository,
   getLoggedUser,
   getFollowersQuery,
-  getFollowingQuery
+  getFollowingQuery,
+  getStarredRepoQuery
 };

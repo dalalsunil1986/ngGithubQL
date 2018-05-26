@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-pinned-repo',
-  templateUrl: './pinned-repo.component.html',
-  styleUrls: ['./pinned-repo.component.css']
+  selector: "git-pinned-repo",
+  templateUrl: "./pinned-repo.component.html",
+  styleUrls: ["./pinned-repo.component.css"]
 })
 export class PinnedRepoComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

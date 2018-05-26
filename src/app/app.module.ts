@@ -13,20 +13,24 @@ import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { NgHttpLoaderModule } from "ng-http-loader";
 
-import { gitConfig } from "./../environments/environment";
+import { gitConfig } from "./../environments/environmentDummy";
 import { FollowersComponent } from "./components/followers/followers.component";
 import { FollowingComponent } from "./components/following/following.component";
 import { PinnedRepoComponent } from "./components/pinned-repo/pinned-repo.component";
 import { RepoComponent } from "./components/repo/repo.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LeftsideDashboardComponent } from "./components/dashboard/leftside-dashboard/leftside-dashboard.component";
+import { StarredRepoComponent } from "./components/starred-repo/starred-repo.component";
+import { MainCompoComponent } from "./components/dashboard/main-compo/main-compo.component";
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
     FollowersComponent,
     FollowingComponent,
+    StarredRepoComponent,
     PinnedRepoComponent,
+    MainCompoComponent,
     RepoComponent,
     DashboardComponent,
     LeftsideDashboardComponent

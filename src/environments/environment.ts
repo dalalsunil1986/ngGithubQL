@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const githConfig = {
+export const gitConfig = {
   githubAPI: "https://api.github.com/graphql",
   token: "<-YOUR_TOKEN->",
   clientId: "<-YOUR_CLIENT_ID->",

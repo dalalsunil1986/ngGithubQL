@@ -13,7 +13,7 @@ import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { NgHttpLoaderModule } from "ng-http-loader";
 
-import { githConfig } from "./../environments/environment";
+import { gitConfig } from "./../environments/environment";
 import { FollowersComponent } from "./components/followers/followers.component";
 import { FollowingComponent } from "./components/following/following.component";
 import { PinnedRepoComponent } from "./components/pinned-repo/pinned-repo.component";
@@ -47,11 +47,11 @@ import { LeftsideDashboardComponent } from "./components/dashboard/leftside-dash
 export class AppModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {
     let headers = new HttpHeaders();
-    headers = headers.set("Authorization", "bearer " + githConfig.token);
+    headers = headers.set("Authorization", "bearer " + gitConfig.token);
 
     apollo.create({
       link: httpLink.create({
-        uri: githConfig.githubAPI,
+        uri: gitConfig.githubAPI,
         headers: headers
       }),
       cache: new InMemoryCache()

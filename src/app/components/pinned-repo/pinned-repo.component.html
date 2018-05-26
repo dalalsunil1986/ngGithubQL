@@ -1,3 +1,38 @@
-<p>
-  pinned-repo works!
-</p>
+<div>
+  <div class="row">
+    <p class="m-3">Pinned Repositories</p>
+  </div>
+  <div class="row" *ngIf="ownerObject?.pinnedRepositories?.nodes.length > 0; else noData">
+    <div class="col-sm-6" *ngFor="let pinnedRepo of ownerObject?.pinnedRepositories?.nodes">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h6 class="card-title text-primary">{{pinnedRepo.name}}</h6>
+          <p class="card-text" style="font-size: 12.5px">{{pinnedRepo.description}}</p>
+        </div>
+        <div class="ml-3 mr-3 mb-3">
+          <span class="mr-4">{{pinnedRepo.languages?.nodes[0]?.name}}</span>
+          <span class="mr-4" style="font-size: small" *ngIf="pinnedRepo.languages?.nodes.length > 0">
+            <i class="fa fa-star mr-1"></i>{{pinnedRepo.stargazers?.totalCount}}</span>
+          <span class="mr-4" style="font-size: small" *ngIf="pinnedRepo.languages?.nodes.length > 0">
+            <i class="fa fa-code-fork mr-1"></i>{{pinnedRepo.forkCount}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="error-template">
+          <h1>
+            Oops!</h1>
+          <h2 class="text-muted">
+            404 Not Found</h2>
+          <div class="error-details">
+            <h4> Sorry, You didn't saved any Pinned Repo</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

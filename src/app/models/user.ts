@@ -15,6 +15,7 @@ export class Viewer {
   url: any;
   websiteUrl: any;
   pinnedRepositories: any;
+  repositories: any;
   followers: any;
   following: any;
   starredRepositories: any;

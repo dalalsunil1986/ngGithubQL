@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { Viewer } from "../../models/user";
 
 @Component({
-  selector: 'app-repo',
-  templateUrl: './repo.component.html',
-  styleUrls: ['./repo.component.css']
+  selector: "git-repo",
+  templateUrl: "./repo.component.html",
+  styleUrls: ["./repo.component.css"]
 })
 export class RepoComponent implements OnInit {
+  @Input("ownerRepoObjects") ownerRepoObjects: Viewer;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

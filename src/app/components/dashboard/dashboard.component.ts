@@ -2,10 +2,11 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import { Observable } from "rxjs";
 import {
-  getLoggedUser,
+  getLoggedUserQuery,
   getFollowersQuery,
   getFollowingQuery,
-  getStarredRepoQuery
+  getStarredRepoQuery,
+  getUserRepositoryQuery
 } from "../../query/gitGraphQLQueries";
 import { Viewer } from "../../models/user";
 import { ActivatedRoute } from "@angular/router";
@@ -24,6 +25,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ownerStarredRepoObjects: Viewer;
 
+  ownerRepoObjects: Viewer;
+
   // Routing getting usernam by params
   username: String;
   private sub: any;
@@ -32,6 +35,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.ownerFollowersObject = new Viewer();
     this.ownerFollowingObjects = new Viewer();
     this.ownerStarredRepoObjects = new Viewer();
+    this.ownerRepoObjects = new Viewer();
   }
 
   ngOnInit() {
@@ -43,7 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.apollo
       .watchQuery<any>({
-        query: getLoggedUser,
+        query: getLoggedUserQuery,
         variables: {
           first: 50,
           login: this.username
@@ -97,6 +101,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .valueChanges.subscribe(({ data, loading }) => {
         this.ownerStarredRepoObjects = data.user;
         console.log("data", this.ownerStarredRepoObjects);
+      });
+  }
+
+  getRepositories() {
+    this.apollo
+      .watchQuery<any>({
+        query: getUserRepositoryQuery,
+        variables: {
+          first: 50,
+          login: this.username
+        }
+      })
+      .valueChanges.subscribe(({ data, loading }) => {
+        this.ownerRepoObjects = data.user;
+        console.log("data", this.ownerRepoObjects);
       });
   }
 

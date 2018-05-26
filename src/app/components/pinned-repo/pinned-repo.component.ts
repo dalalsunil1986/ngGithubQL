@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { Viewer } from "../../models/user";
 
 @Component({
   selector: "git-pinned-repo",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./pinned-repo.component.css"]
 })
 export class PinnedRepoComponent implements OnInit {
+  @Input("ownerObject") ownerObject: Viewer;
   constructor() {}
 
   ngOnInit() {}

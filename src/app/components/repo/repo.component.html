@@ -1,3 +1,17 @@
-<p>
-  repo works!
-</p>
+<div class="row mt-3">
+  <div class="col-sm-6" *ngFor="let repo of ownerRepoObjects?.repositories?.nodes">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6 class="card-title text-primary">{{repo.name}}</h6>
+        <p class="card-text" style="font-size: 12.5px">{{repo.description}}</p>
+      </div>
+      <div class="ml-3 mr-3 mb-3">
+        <span class="mr-4">{{repo.languages?.nodes[0]?.name}}</span>
+        <span class="mr-4" style="font-size: small" *ngIf="repo.languages?.nodes.length > 0">
+          <i class="fa fa-star mr-1"></i>{{repo.stargazers?.totalCount}}</span>
+        <span class="mr-4" style="font-size: small" *ngIf="repo.languages?.nodes.length > 0">
+          <i class="fa fa-code-fork mr-1"></i>{{repo.forkCount}}</span>
+      </div>
+    </div>
+  </div>
+</div>
